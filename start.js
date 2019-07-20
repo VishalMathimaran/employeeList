@@ -1,15 +1,15 @@
+require("./models/db")
 const mongoose = require("mongoose");
 const express= require("express");
+const bodyParser=require("body-parser");
 const app=express();
-const port = process.env.PORT||3000
-app.get('/',function(req,res){
-  res.json(Employee);   
-});
-
-app.listen(port,function(){
-  console.log("COnnected");
-});
-
+const port = process.env.PORT||3000;
+app.use(express.static('views'));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+//database schema creation
 let employeeSchema=new mongoose.Schema({
   name: String,
   gmail:String,
@@ -17,13 +17,31 @@ let employeeSchema=new mongoose.Schema({
   phoneno:String
 });
 let Employee = mongoose.model('Employee',employeeSchema);
-let ram = new Employee({ name: 'Silence' ,gmail:'vishal@gmail.com',city:'trlvli',phoneno:'892390'});
-ram.save(function (err, Employee) {
-  if (err) return console.error(err);
-  console.log(ram);
+//Get
+app.get('/',function(req,res){
+  res.render('index.ejs')
 });
-Employee.find(function (err, Employee) {
+
+app.get('/show',function(req,res){
+  let points = [];
+  Employee.find(function (err, employee) {
   if (err) return console.error(err);
-  console.log(users);
-  users.remove();
+  points.push(employee);
+  res.send(points);
 })
+});
+
+//POST
+app.post("/addEmployee",function(req,res){
+  const data=req.body
+  let newEmp = new Employee({ name: data.name ,gmail:data.gmail,city:data.City,phoneno:data.phoneno});
+  newEmp.save(function (err, data) {
+    if (err) return console.error(err);
+    console.log(data);
+  });
+  res.redirect('/show')
+})
+//Listening to port
+app.listen(port,function(){
+  console.log("COnnected");
+});

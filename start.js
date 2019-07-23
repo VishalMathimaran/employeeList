@@ -22,23 +22,26 @@ app.get('/',function(req,res){
   res.render('index.ejs')
 });
 
+// app.get('/show',function(req,res){
+//   let points = [];
+//   Employee.find(function (err, employee) {
+//   if (err) return console.error(err);
+//   points.push(employee);
+//   res.send(points);
+// })
+// });
+
 app.get('/show',function(req,res){
-  let points = [];
-  Employee.find(function (err, employee) {
-  if (err) return console.error(err);
-  points.push(employee);
-  res.send(points);
-})
+    res.render('search.ejs');
 });
 
-app.get('/show/:name',function(req,res){
-  console.log(req.params.name);
-  Employee.find({name:req.params.name},function (err, employee) {
+app.post('/search',function(req,res){
+  const data=req.body;
+  Employee.find({name:data.name},function (err, employee) {
   if (err) return console.error(err);
   res.send(employee);
-})
 });
-
+});
 
 //POST
 app.post("/addEmployee",function(req,res){

@@ -31,6 +31,15 @@ app.get('/show',function(req,res){
 })
 });
 
+app.get('/show/:name',function(req,res){
+  console.log(req.params.name);
+  Employee.find({name:req.params.name},function (err, employee) {
+  if (err) return console.error(err);
+  res.send(employee);
+})
+});
+
+
 //POST
 app.post("/addEmployee",function(req,res){
   const data=req.body

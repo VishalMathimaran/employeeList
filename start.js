@@ -1,10 +1,11 @@
 require("./models/db")
 const mongoose = require("mongoose");
+var path = require("path");
 const express= require("express");
 const bodyParser=require("body-parser");
 const app=express();
 const port = process.env.PORT||3000;
-app.use(express.static('views'));
+app.use(express.static(path.join(__dirname, 'views')));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -34,6 +35,10 @@ app.get('/',function(req,res){
 app.get('/show',function(req,res){
     res.render('search.ejs');
 });
+
+app.get('/delete',function(req,res){
+  res.render("delete.ejs");
+})
 
 app.post('/search',function(req,res){
   const data=req.body;

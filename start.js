@@ -19,7 +19,7 @@ let employeeSchema=new mongoose.Schema({
 });
 let Employee = mongoose.model('Employee',employeeSchema);
 //Get
-app.get('/',function(req,res){
+app.get('/add',function(req,res){
   res.render('index.ejs')
 });
 
@@ -32,9 +32,13 @@ app.get('/',function(req,res){
 // })
 // });
 
-app.get('/show',function(req,res){
+app.get('/',function(req,res){
     res.render('search.ejs');
 });
+
+app.get('/show',function(req,res){
+  res.render('display.ejs');
+})
 
 app.get('/delete',function(req,res){
   res.render("delete.ejs");
@@ -56,7 +60,7 @@ app.post("/addEmployee",function(req,res){
     if (err) return console.error(err);
     console.log(data);
   });
-  res.redirect('/show')
+  res.redirect('/')
 })
 //Listening to port
 app.listen(port,function(){

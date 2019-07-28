@@ -5,6 +5,9 @@ body{
   background-attachment: fixed;
   height: 100%;
 }
+html{
+  height:100%;
+}
 .my-custom-scrollbar {
 position: relative;
 height: 600px;

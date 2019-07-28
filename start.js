@@ -55,6 +55,15 @@ app.post("/addEmployee",function(req,res){
   });
   res.redirect('/')
 })
+//
+// Model.remove({ _id: req.body.id }, function(err) {
+//     if (!err) {
+//             message.type = 'notification!';
+//     }
+//     else {
+//             message.type = 'error';
+//     }
+// });
 //Listening to port
 app.listen(port,function(){
   console.log("COnnected");

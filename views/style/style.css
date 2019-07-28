@@ -1,9 +1,19 @@
+body, html {
+  height: 100%;
+}
+.custom{
+  background: LightGray;
+  opacity:0.5;
+}
+.custom > tr{
+  opacity:1;
+}
 body{
   background-image: url('/HByeKGm.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
   height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .show{
   display: none;
@@ -30,14 +40,5 @@ body:before {
     width : 100%;
     height: 100%;
     background: inherit;
-
-      filter        : blur(5px);
-      -moz-filter   : blur(5px);
-      -webkit-filter: blur(5px);
-      -o-filter     : blur(5px);
-
-    transition        : all 1s linear;
-    -moz-transition   : all 1s linear;
-    -webkit-transition: all 1s linear;
-    -o-transition     : all 1s linear;
+opacity:40%;
 }

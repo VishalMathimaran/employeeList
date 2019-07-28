@@ -3,6 +3,15 @@ body{
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
+  height: 100%;
+}
+.my-custom-scrollbar {
+position: relative;
+height: 600px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
 }
 body {
     overflow: hidden;

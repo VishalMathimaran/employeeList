@@ -23,21 +23,14 @@ app.get('/add',function(req,res){
   res.render('index.ejs')
 });
 
-// app.get('/show',function(req,res){
-//   let points = [];
-//   Employee.find(function (err, employee) {
-//   if (err) return console.error(err);
-//   points.push(employee);
-//   res.send(points);
-// })
-// });
-
 app.get('/',function(req,res){
-    res.render('search.ejs');
+    res.render('index.ejs');
 });
 
 app.get('/show',function(req,res){
-  res.render('display.ejs');
+  Employee.find({}, function(err, employee) {
+         res.render('display.ejs', {employee: employee});
+      });
 })
 
 app.get('/delete',function(req,res){
@@ -48,7 +41,7 @@ app.post('/search',function(req,res){
   const data=req.body;
   Employee.find({name:data.name},function (err, employee) {
   if (err) return console.error(err);
-  res.send(employee);
+  res.render('search.ejs',{employee:employee});
 });
 });
 

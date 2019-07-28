@@ -32,7 +32,6 @@ app.get('/show',function(req,res){
          res.render('display.ejs', {employee: employee});
       });
 })
-
 app.get('/delete',function(req,res){
   res.render("delete.ejs");
 })
@@ -55,15 +54,20 @@ app.post("/addEmployee",function(req,res){
   });
   res.redirect('/')
 })
-//
-// Model.remove({ _id: req.body.id }, function(err) {
-//     if (!err) {
-//             message.type = 'notification!';
-//     }
-//     else {
-//             message.type = 'error';
-//     }
-// });
+app.post("/delEmployee",function(req,res){
+  Employee.deleteMany({ name:req.body.name },
+(err, data) => {
+if (err) {
+console.log(err);
+}
+console.log(null, data);
+}
+)
+
+//done(null/, data/);
+  res.redirect("/");
+})
+
 //Listening to port
 app.listen(port,function(){
   console.log("COnnected");

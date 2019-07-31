@@ -1,0 +1,49 @@
+<%include header.ejs %>
+<div class="modal fade myModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add user</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action='/adduser' class= 'form' method="post">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Name</label>
+            <input type="text" class="form-control"  name="name" placeholder="Name" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" name="email" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email" required>
+            <small  class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">City</label>
+            <input type="text" name='City' class="form-control"  placeholder="City" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Phoneno</label>
+            <input type="text" name="phoneno" class="form-control"  placeholder="Phoneno" pattern="(?=.*[0-9]).{6,13}"  required>
+          </div>
+          <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" name="password" class="form-control"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}" title="Minimum 6 with min 1 caps and number"  placeholder="Password">
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input"  required>
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% include footer.ejs %>
